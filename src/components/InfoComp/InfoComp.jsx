@@ -1,6 +1,7 @@
 import React from 'react'
 
 function InfoComp({ data }) {
+    console.log(data);
     let cardStyle = {
         width: "400px",
         height: "350px"
@@ -15,11 +16,11 @@ function InfoComp({ data }) {
             <h5>Owner Informations</h5>
             <div className=' p-2 px-5'>
                 <div>
-                    <h6>Owned by: {data.currentImage.ownerDetails.ownerName}</h6>
+                    <h6>Owned by: {data.ownerDetails.ownerName}</h6>
                     <h6>For Contact</h6>
                     <div className='d-flex flex-wrap justify-content-start'>
-                        <p className='mx-2'><b>Mail Id:</b> {data.currentImage.ownerDetails.ownerEmail}</p>
-                        <p className='mx-2'><b>Phone Number:</b> {data.currentImage.ownerDetails.ownerphoneNumber}</p>
+                        <p className='mx-2'><b>Mail Id:</b> {data.ownerDetails.ownerEmail}</p>
+                        <p className='mx-2'><b>Phone Number:</b> {data.ownerDetails.ownerphoneNumber}</p>
                     </div>
                 </div>
                 <div className='justify-content-center'>
@@ -28,7 +29,7 @@ function InfoComp({ data }) {
                 </div>
             </div>
             <img class="card-img-top" style={cardStyle}
-                src={`http://localhost:3001/${data.currentImage.filePath}`}
+                src={`http://localhost:3001/${data.filePath}`}
                 alt="Card image " />
         </div>
     )

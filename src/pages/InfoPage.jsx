@@ -11,8 +11,8 @@ function InfoPage() {
     let fetchData = (fname) => {
         let index = images.findIndex(image => image.fileName === fname);
         let current = images[index];
-        setCurrentImage(current)
         console.log(current);
+        setCurrentImage(current)
     }
     useEffect(() => {
         fetchData(fname)
