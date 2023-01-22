@@ -1,54 +1,31 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { postImages } from '../redux/userSlice';
 
-function UploadPage() {
-    const [ownerName, setOwnerName] = useState("")
-    const [ownerEmail, setOwnerEmail] = useState("")
-    const [category, setCategory] = useState("")
-    const [ownerphoneNumber, setOwnerPhoneNumber] = useState("")
-    const [images, setImages] = useState([]);
+function EditPage() {
+    const { fname } = useParams();
+    let { images = [] } = useSelector(((store) => store.images))
+    let index = images.findIndex(image => image.fileName === fname);
+    let current = images[index];
+    console.log(current);
+    const [ownerName, setOwnerName] = useState(current.ownerDetails.ownerName)
+    const [ownerEmail, setOwnerEmail] = useState(current.ownerDetails.ownerEmail)
+    const [category, setCategory] = useState(current.ownerDetails.category)
+    const [ownerphoneNumber, setOwnerPhoneNumber] = useState(current.ownerDetails.ownerphoneNumber)
+    // const [editImage, setImages] = useState([]);
     const [preview, setPreview] = useState([]);
     const dispatch = useDispatch();
-
     const boxStyle = {
         "box-shadow": "0px 0px 15px -4px rgba(0,0,0,0.75)"
     }
-    const carStyle = {
-        "box-shadow": "0px 0px 15px -4px rgba(0,0,0,0.75)",
-        width: "18rem"
+    let cardStyle = {
+        height: "100%",
+        width: "100%",
+        "box-shadow": "0px 0px 15px -4px rgba(0,0,0,0.75)"
     }
-
-    const handleImageChanges = (e) => {
-        e.preventDefault();
-        if (Array.from(e.target.files).every((file) => file.type === 'image/jpeg' || file.type === 'image/png')) {
-            const res = Array.from(e.target.files)
-
-            setImages([...res])
-            console.log(images);
-            setPreview(res.map((file) => URL.createObjectURL(file)))
-            console.log(preview);
-
-        } else {
-            alert("Please select valid file format only")
-        }
+    let handleSubmit = () => {
+        console.log("Hi");
     }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        let formData = new FormData();
-        formData.append('ownerName', ownerName)
-        formData.append('ownerEmail', ownerEmail)
-        formData.append('category', category)
-        formData.append('ownerphoneNumber', ownerphoneNumber)  //formdata objec
-        for (let i = 0; i < images.length; i++) {
-            formData.append('files', images[i])
-        }
-        dispatch(postImages(formData))
-    }
-
-
 
     return (
         <div className='container-fluid'>
@@ -61,6 +38,7 @@ function UploadPage() {
                         <label htmlFor="name">Full Name</label>
                         <input type="text"
                             onChange={(e) => setOwnerName(e.target.value)}
+                            value={ownerName}
                             className="form-control"
                             id="name"
                             placeholder="Enter Full Name"
@@ -69,6 +47,7 @@ function UploadPage() {
                     <div className="m-2 form-group">
                         <label htmlFor="email">Email address</label>
                         <input type="email" className="form-control"
+                            value={ownerEmail}
                             onChange={(e) => setOwnerEmail(e.target.value)}
                             id="email" placeholder="Enter email" />
                     </div>
@@ -76,43 +55,34 @@ function UploadPage() {
                         <label htmlFor="phoneNumber">Phone Number</label>
                         <input type="text" className="form-control"
                             onChange={(e) => setOwnerPhoneNumber(e.target.value)}
+                            value={ownerphoneNumber}
                             id="phoneNumber" placeholder="Enter Phone Number" />
                     </div>
                     <div className="m-2 form-group">
                         <label htmlFor="category">Category</label>
                         <input type="text" className="form-control"
+                            value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             id="category" placeholder="Enter Category" />
                     </div>
-                    <div className="m-2 form-group">
+                    {/* <div className="m-2 form-group">
                         <label htmlFor="images">Pictures</label>
                         <input type="file"
                             onChange={(e) => handleImageChanges(e)}
                             className="form-control" id="images" multiple />
-                    </div>
+                    </div> */}
                     <div className="mt-2 mx-5 pt-3 form-group">
                         <button type={"submit"} className="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
-
-            {/* Picture Preview */}
-
-            <div style={boxStyle} className='border p-2 m-1 row d-flex justify-content-start'>
-                <h3 className='m-2'>Preview</h3>
-                {
-                    preview.length ? preview.map((image) => {
-                        return (
-                            <div className="card m-2" style={carStyle}>
-                                <img className="card-img-top p-2" style={{ height: "200px" }} src={image} alt="Pictures" />
-
-                            </div>
-                        )
-                    }) : <p className='text-center'>Select files</p>
-                }
+            <div>
+                <img className="card-img-top" style={cardStyle}
+                    src={`http://localhost:3001/${current.filePath}`}
+                    alt="Card image cap" />
             </div>
         </div>
     )
 }
 
-export default UploadPage
+export default EditPage

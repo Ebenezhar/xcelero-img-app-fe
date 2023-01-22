@@ -9,12 +9,11 @@ function Home() {
     useEffect(() => {
         dispatch(fetchAllImages());
     }, [])
-    console.log(images);
 
 
     return (
         <div className='container-fluid'>
-            <div className='d-flex  flex-wrap'>
+            <div className='d-flex flex-wrap'>
                 {
                     images.length ? images.map((image) => {
                         return (

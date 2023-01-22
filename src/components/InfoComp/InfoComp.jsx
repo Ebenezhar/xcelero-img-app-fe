@@ -1,9 +1,8 @@
 import React from 'react'
 
-function InfoComp({ data }) {
-    console.log(data);
+function InfoComp({ data, handleDelete, handleEdit }) {
     let cardStyle = {
-        width: "400px",
+        width: "600px",
         height: "350px"
     }
 
@@ -17,6 +16,7 @@ function InfoComp({ data }) {
             <div className=' p-2 px-5'>
                 <div>
                     <h6>Owned by: {data.ownerDetails.ownerName}</h6>
+                    <h6>Category: {data.ownerDetails.category}</h6>
                     <h6>For Contact</h6>
                     <div className='d-flex flex-wrap justify-content-start'>
                         <p className='mx-2'><b>Mail Id:</b> {data.ownerDetails.ownerEmail}</p>
@@ -24,8 +24,8 @@ function InfoComp({ data }) {
                     </div>
                 </div>
                 <div className='justify-content-center'>
-                    <button className='m-2 btn btn-primary'>Edit</button>
-                    <button className='m-2 btn btn-danger'>Delete</button>
+                    <button onClick={() => handleEdit(data.fileName)} className='m-2 btn btn-primary'>Edit</button>
+                    <button onClick={() => handleDelete(data.fileName)} className='m-2 btn btn-danger'>Delete</button>
                 </div>
             </div>
             <img class="card-img-top" style={cardStyle}

@@ -12,12 +12,12 @@ function DisplayCard({ data }) {
         navigate(`/viewinfo/${fName}`)
     }
     return (
-        <div class="card m-2 bg-info" style={{ width: "12rem" }}>
-            <img class="card-img-top" style={cardStyle}
+        <div className="card m-2 bg-info" style={{ width: "12rem" }}>
+            <img className="card-img-top" style={cardStyle}
                 src={`http://localhost:3001/${data.filePath}`}
-                alt="Card image cap" />
-            <div class="card-body">
-                <button onClick={() => handleClick(data.fileName)} class="btn btn-primary">View Info</button>
+                alt="Card image " />
+            <div className="card-body">
+                <button onClick={() => handleClick(data.fileName)} className="btn btn-primary">View Info</button>
             </div>
         </div>
     )
