@@ -5,6 +5,7 @@ import { config } from "../config/config"
 
 // Post (create) multiple images along with user information(name,email,phone number,category) to server
 export const postImages = createAsyncThunk('/postUser', async (values) => {
+    console.log(values);
     try {
         const responseUser = await axios.post(`${config.api}/postimages`, values);
         if (responseUser.status === 200) {
@@ -34,6 +35,17 @@ export const fetchAllImages = createAsyncThunk('/fetchallimages', async () => {
     }
 })
 
+export const updateDetails = createAsyncThunk('/updatedetails', async (values) => {
+    console.log("svd", values);
+    try {
+        const response = await axios.put(`${config.api}/updatedetails`, values)
+        if (response.status === 200) {
+            return response.data;
+        }
+    } catch (error) {
+        return error.response.data;
+    }
+})
 
 //Delete the particular image with the help image name which should be unique.
 export const deleteImage = createAsyncThunk('/deleteimage', async (fname) => {
@@ -92,6 +104,19 @@ const userSlice = createSlice({
             }
         });
         builders.addCase(deleteImage.rejected, (state, action) => {
+            state.status = 'failed';
+            console.log(action.error);
+        });
+        builders.addCase(updateDetails.pending, (state, action) => {
+            state.status = 'loading';
+        });
+        builders.addCase(updateDetails.fulfilled, (state, action) => {
+            state.status = 'success';
+            if (action.payload.message) {
+                alert(action.payload.message);
+            }
+        });
+        builders.addCase(updateDetails.rejected, (state, action) => {
             state.status = 'failed';
             console.log(action.error);
         });
