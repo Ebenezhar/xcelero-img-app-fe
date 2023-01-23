@@ -36,7 +36,6 @@ export const fetchAllImages = createAsyncThunk('/fetchallimages', async () => {
 })
 
 export const updateDetails = createAsyncThunk('/updatedetails', async (values) => {
-    console.log("svd", values);
     try {
         const response = await axios.put(`${config.api}/updatedetails`, values)
         if (response.status === 200) {
