@@ -5,7 +5,6 @@ import { config } from "../config/config"
 
 // Post (create) multiple images along with user information(name,email,phone number,category) to server
 export const postImages = createAsyncThunk('/postUser', async (values) => {
-    console.log(values);
     try {
         const responseUser = await axios.post(`${config.api}/postimages`, values);
         if (responseUser.status === 200) {
@@ -35,9 +34,11 @@ export const fetchAllImages = createAsyncThunk('/fetchallimages', async () => {
     }
 })
 
+//Update the informations on the images
 export const updateDetails = createAsyncThunk('/updatedetails', async (values) => {
+    console.log(values);
     try {
-        const response = await axios.put(`${config.api}/updatedetails`, values)
+        const response = await axios.post(`${config.api}/updatedetails`, values)
         if (response.status === 200) {
             return response.data;
         }
