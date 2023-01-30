@@ -1,4 +1,4 @@
-# Project Name : Images Grids
+# Project Name : Image Grid
 
 Description : The purpose of this application is to get the multiple images from the users and save it in the database and display them in the card to every users.
 
@@ -11,7 +11,7 @@ Description : The purpose of this application is to get the multiple images from
 
 ## How to use the Project
 
-### To store the pictures in the application.
+### 1. To store the pictures in the application(CREATE).
 
 Get the informations from the user and get the single or multiple pictures from the user like following snapshot.
 With the help of the preview we can see the pictures that have been stored in the database.
@@ -19,7 +19,7 @@ Using the submit button we can save the pictures the pictures in the database.
 
 <img src ="/snaps/save multiple images.PNG">
 
-### To view the pictures from the application.
+### 2. To view the pictures from the application(READ).
 
 On the Home page the application will automatically fetch the pictures from the database and display them to the user.
 Using the grid system we display the pictures from the database
@@ -33,14 +33,14 @@ There are two buttons "Edit" and "Delete".
 
 <img src ="/snaps/Info Page.PNG">
 
-### To edit the pictures from the application.
+### 3. To edit the pictures from the application(UPDATE).
 
 Edit buttons will navigate to the edit page. There we can edit and update the information about the picture.
 Then we submit the edited informations.
 
 <img src ="/snaps/Edit page.PNG">
 
-### To delete the pictures from the application.
+### 4. To delete the pictures from the application(DELETE).
 
 In the information page, we have provision to delete the pictures.
 There is a delete button that will delete the pictures and the picture information.
