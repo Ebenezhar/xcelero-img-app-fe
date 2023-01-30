@@ -24,8 +24,25 @@ Using the submit button we can save the pictures the pictures in the database.
 On the Home page the application will automatically fetch the pictures from the database and display them to the user.
 Using the grid system we display the pictures from the database
 
-Responsive view
+<img src ="/snaps/display in normal view.PNG">
 <img src ="/snaps/display in mobile view.PNG">
 
-Normal view
-<img src ="/snaps/display in normal view.PNG">
+On the cards, there is a button(view Info) that will navigate to the information page.
+That will shows the informations of the picture.
+There are two buttons "Edit" and "Delete".
+
+<img src ="/snaps/Info Page.PNG">
+
+### To edit the pictures from the application.
+
+Edit buttons will navigate to the edit page. There we can edit and update the information about the picture.
+Then we submit the edited informations.
+
+<img src ="/snaps/Edit page.PNG">
+
+### To delete the pictures from the application.
+
+In the information page, we have provision to delete the pictures.
+There is a delete button that will delete the pictures and the picture information.
+
+<img src ="/snaps/delete page.PNG">
