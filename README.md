@@ -11,6 +11,21 @@ Description : The purpose of this application is to get the multiple images from
 
 ## How to use the Project
 
-### To store the picture in the application.
+### To store the pictures in the application.
+
+Get the informations from the user and get the single or multiple pictures from the user like following snapshot.
+With the help of the preview we can see the pictures that have been stored in the database.
+Using the submit button we can save the pictures the pictures in the database.
 
 <img src ="/snaps/save multiple images.PNG">
+
+### To view the pictures from the application.
+
+On the Home page the application will automatically fetch the pictures from the database and display them to the user.
+Using the grid system we display the pictures from the database
+
+Responsive view
+<img src ="/snaps/display in mobile view.PNG">
+
+Normal view
+<img src ="/snaps/display in normal view.PNG">
